@@ -1,86 +1,84 @@
-# Player Re-Identification – List.ai Assignment
+# 🏃‍♂️ Player Re-Identification in Sports Footage
 
-This project solves **player re-identification** in a 15-second soccer video using YOLOv11 and centroid-based tracking.
+This project is a solution for the **Player Re-Identification** assignment given by **List.ai** as part of the AI Intern role selection.
 
-## ✅ Task Chosen: Option 2 – Re-Identification in a Single Feed
+## 🎯 Task: Re-Identification in a Single Feed
 
-> Detect each player and ensure that players who go out of frame and reappear are assigned the **same identity** throughout the video.
+Given a 15-second football video (`15sec_input_720p.mp4`), the goal is to:
+- Detect players and assign consistent IDs
+- Ensure players who exit and re-enter the frame retain the same identity
+- Generate a final output video with tracking overlays
+- Save tracking metadata in `.pkl` format
 
----
+## 🗂️ Folder Structure
 
-## 📁 Folder Structure
-
+```
 player_reid_assignment/
-├── models/ # best.pt (YOLOv11 model)
-├── input/ # 15sec_input_720p.mp4
-├── output/ # Final output
-│ ├── reid_output.mp4
-│ └── results.pkl
+├── models/
+│   └── best.pt               # [Download separately – see below]
+├── output/
+│   ├── reid_output.mp4       # [Generated output – see Drive link]
+│   └── results.pkl           # [Tracking data]
 ├── src/
-│ ├── detector.py
-│ ├── tracker.py
-│ └── main.py
+│   ├── main.py               # Main execution script
+│   ├── detector.py           # Player detection (YOLOv11)
+│   └── tracker.py            # ID tracking logic
+├── requirements.txt
 ├── README.md
-└── requirements.txt
+└── .gitignore
+```
 
-yaml
-Copy
-Edit
+## 📦 Model & Output Files
 
----
+Due to GitHub's 100MB file size limit, the model and output files are hosted on Google Drive.
 
-## ⚙️ Installation
+🔗 [Download Model & Output Files](https://drive.google.com/drive/folders/1OHQSONJHMNd-0aJY_aZP6FZGLAWytpBf?usp=sharing)
 
-```bash
-pip install -r requirements.txt
-If you're using a virtual environment:
+Includes:
+- `models/best.pt` – YOLOv11 model for player detection
+- `output/reid_output.mp4` – Final video with tracked player IDs
+- `output/results.pkl` – Pickle file with player tracking metadata
 
-bash
-Copy
-Edit
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-🚀 Running the Project
-bash
-Copy
-Edit
-python src/main.py
-Ensure:
+## 🚀 How to Run
 
-models/best.pt is present
+1. **Clone the repo**:
+   ```bash
+   git clone https://github.com/HimaShin/player_reid_assignment.git
+   cd player_reid_assignment
+   ```
 
-input/15sec_input_720p.mp4 exists
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-📽️ Output
-🎥 output/reid_output.mp4 → video with player ID tracking
+3. **Place files**:
+   - Download `best.pt` and place it in the `models/` folder
+   - Make sure `15sec_input_720p.mp4` is available in `sample_videos/`
 
-📦 output/results.pkl → frame-wise ID and bounding box data
+4. **Run the main script**:
+   ```bash
+   python src/main.py --input sample_videos/15sec_input_720p.mp4 --output output/reid_output.mp4 --model models/best.pt --save-results output/results.pkl
+   ```
 
-👨‍💻 Developer Info
-Name: Pendlimarri Himakar
-Role Applied: AI Intern at List.ai
+## 🧠 Technologies Used
 
-📧 Submit to:
+- Python 3.10+
+- YOLOv11 (fine-tuned) for detection
+- OpenCV for video I/O
+- Custom tracker for player re-identification
+- Pickle for result serialization
 
-archana@list.ai
+## 📬 Submission
 
-rahul@list.ai
+Submitted to:  
+- `archana@list.ai`  
+- `rahul@list.ai`  
 
-🔍 Notes
-Detection: YOLOv11 (Ultralytics)
+By:  
+**Himakar Pendlimarri**
 
-Tracking: Custom centroid-based method
+## 📌 Note
 
-Fully modular code, ready for extension (e.g., Deep SORT)
-
-✅ Done!
-Thanks for the opportunity!
-
-
-
-
-
-
-
-
+- This repo only contains code.
+- Large files are excluded as per GitHub file size policies.
